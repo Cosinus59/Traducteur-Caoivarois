@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ItemListCellControlleur">
+   <children>
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="68.0" style="-fx-background-color: #3f3f3f;">
+         <children>
+            <ImageView fx:id="imgViewer" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin></ImageView>
+         </children>
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
+      </StackPane>
+      <VBox maxWidth="-Infinity" prefWidth="320.0">
+         <children>
+            <StackPane fx:id="titleField" maxHeight="-Infinity" minHeight="32.0" prefHeight="32.0" style="-fx-background-image: url(&quot;Header.png&quot;);">
+               <children>
+                  <TextField fx:id="titleFld" disable="true" editable="false" promptText="Nom de l'Item" visible="false">
+                     <StackPane.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </StackPane.margin>
+                  </TextField>
+                  <Label fx:id="titleLbl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Titre" textFill="WHITE">
+                     <StackPane.margin>
+                        <Insets left="15.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="descField" maxHeight="1.7976931348623157E308" minHeight="56.0" style="-fx-background-color: black;">
+               <children>
+                  <TextArea fx:id="descFld" disable="true" maxHeight="1.7976931348623157E308" prefHeight="56.0" promptText="Description de l'Item" visible="false" wrapText="true">
+                     <StackPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </StackPane.margin>
+                  </TextArea>
+                  <Label fx:id="descLbl" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="56.0" text="Label" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="5.0" top="5.0" />
+                     </padding>
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" right="4.0" top="5.0" />
+   </padding>
+</HBox>

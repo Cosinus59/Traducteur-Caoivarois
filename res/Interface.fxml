@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="root" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControlleurTraducteur">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <TabPane tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="ItemsTab" text="Items">
+               <content>
+                  <HBox fx:id="itemBox">
+                     <children>
+                        <Pane fx:id="itemSpacer1" prefWidth="0.0" />
+                        <AnchorPane>
+                           <children>
+                              <ListView fx:id="itemList" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="431.0" stylesheets="@Style.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                        <Pane fx:id="itemSpacer2" prefWidth="0.0" />
+                        <Separator orientation="VERTICAL" />
+                        <Pane fx:id="itemSpacer3" prefWidth="0.0" />
+                        <VBox alignment="CENTER" maxWidth="1.7976931348623157E308">
+                           <children>
+                              <HBox alignment="CENTER" maxWidth="407.0">
+                                 <children>
+                                    <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="68.0" prefWidth="68.0" style="-fx-background-color: #3f3f3f;">
+                                       <children>
+                                          <ImageView fx:id="selectedImgViewer" fitHeight="68.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                             <StackPane.margin>
+                                                <Insets />
+                                             </StackPane.margin>
+                                          </ImageView>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </HBox.margin>
+                                    </StackPane>
+                                    <VBox maxWidth="-Infinity" prefWidth="320.0">
+                                       <children>
+                                          <StackPane maxHeight="-Infinity" minHeight="32.0" prefHeight="32.0" style="-fx-background-image: url(&quot;Header.png&quot;);">
+                                             <children>
+                                                <Label fx:id="selectedItemTitleLbl" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Titre" textFill="WHITE">
+                                                   <StackPane.margin>
+                                                      <Insets left="15.0" />
+                                                   </StackPane.margin>
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" onAction="#changeTitle" text="Renommer" />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu>
+                                                </Label>
+                                                <TextField fx:id="selectedItemTitleFld" disable="true" onAction="#endRename" onKeyPressed="#testEndRename" promptText="Nom de l'Item" visible="false">
+                                                   <StackPane.margin>
+                                                      <Insets left="5.0" right="5.0" />
+                                                   </StackPane.margin>
+                                                </TextField>
+                                             </children>
+                                          </StackPane>
+                                          <StackPane maxHeight="1.7976931348623157E308" minHeight="56.0" style="-fx-background-color: black;">
+                                             <children>
+                                                <Label fx:id="selectedItemDescLbl" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="56.0" text="Label" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="15.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                   <StackPane.margin>
+                                                      <Insets />
+                                                   </StackPane.margin>
+                                                   <contextMenu>
+                                                      <ContextMenu>
+                                                        <items>
+                                                          <MenuItem mnemonicParsing="false" onAction="#changeDesc" text="Redéfinir" />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu>
+                                                </Label>
+                                                <TextArea fx:id="selectedItemDescFld" disable="true" maxHeight="1.7976931348623157E308" onKeyPressed="#endRetext" prefHeight="56.0" promptText="Description de l'Item" visible="false" wrapText="true">
+                                                   <StackPane.margin>
+                                                      <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                                                   </StackPane.margin>
+                                                   <font>
+                                                      <Font size="11.0" />
+                                                   </font>
+                                                </TextArea>
+                                             </children>
+                                          </StackPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" right="4.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Pane fx:id="itemSpacer4" prefWidth="0.0" />
+                     </children>
+                  </HBox>
+               </content>
+            </Tab>
+            <Tab fx:id="vehiclesTab" text="Véhicules">
+               <content>
+                  <AnchorPane minHeight="-Infinity" minWidth="-Infinity" />
+               </content>
+            </Tab>
+            <Tab fx:id="structuresTab" text="Structures">
+               <content>
+                  <AnchorPane prefHeight="1500.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="techTab" text="TechTree">
+               <content>
+                  <AnchorPane />
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <Separator prefWidth="200.0" />
+    <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+          <font>
+            <Font size="11.0" fx:id="x3" />
+          </font>
+          <textFill>
+            <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
+          </textFill>
+        </Label>
+        <Pane HBox.hgrow="ALWAYS" />
+        <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" textOverrun="LEADING_ELLIPSIS" HBox.hgrow="NEVER" />
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="1.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>

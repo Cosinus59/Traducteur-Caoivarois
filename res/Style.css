@@ -1,0 +1,3 @@
+.list-view .list-cell:selected{ 
+    -fx-background-color: #cacaca; 
+}
