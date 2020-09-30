@@ -11,7 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modele.Traducteur;
-import vue.Callahan.ControlleurTraducteur;
+import vue.callahan.ControlleurTraducteur;
 
 
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import vue.Callahan.ControlleurTraducteur;
+import vue.callahan.ControlleurTraducteur;
 
 public class Traducteur {
 

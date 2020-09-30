@@ -1,4 +1,4 @@
-package vue.Callahan;
+package vue.callahan;
 
 import java.io.File;
 import java.net.MalformedURLException;
