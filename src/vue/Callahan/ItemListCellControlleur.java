@@ -1,4 +1,4 @@
-package modele;
+package vue.Callahan;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import modele.ItemPickup;
 
 public class ItemListCellControlleur {
 	

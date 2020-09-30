@@ -1,4 +1,4 @@
-package modele;
+package vue.Callahan;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -20,6 +20,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import modele.ItemPickup;
+import modele.PathSelector;
+import modele.Traducteur;
 
 public class ControlleurTraducteur extends Stage {
 	
@@ -99,7 +102,7 @@ public class ControlleurTraducteur extends Stage {
 		stage.setTitle("Traducteur Caoivarois");
 		stage.setResizable(true);
 		stage.show();
-		this.addAll(trad.itemObservableList);
+		this.addAll(trad.getItemObservableList());
 		itemList.requestFocus();
 	}
 	

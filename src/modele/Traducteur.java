@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import vue.Callahan.ControlleurTraducteur;
 
 public class Traducteur {
 
@@ -30,6 +31,10 @@ public class Traducteur {
     	ObservableList<ItemPickup> itemObservableList = FXCollections.observableArrayList();
     	itemObservableList.addAll(bp1,bp2);
     	display.addAll(itemObservableList);
+	}
+
+	public ObservableList<ItemPickup> getItemObservableList() {
+		return itemObservableList;
 	}
 	
 	

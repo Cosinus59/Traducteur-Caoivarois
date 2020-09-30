@@ -1,4 +1,4 @@
-package modele;
+package vue.Callahan;
 
 import java.io.IOException;
 import java.net.URL;
@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.MenuItem;
+import modele.ItemPickup;
 
 public class ItemListCell extends ListCell<ItemPickup> {
 	
