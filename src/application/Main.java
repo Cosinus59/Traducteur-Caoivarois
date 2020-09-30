@@ -1,4 +1,4 @@
-package modele;
+package application;
 	
 import java.io.File;
 import java.io.IOException;
@@ -10,12 +10,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import modele.ControlleurTraducteur;
+import modele.Traducteur;
 
 
 
 public class Main extends Application {
 	
-	static String externContentPath;
+	private static String externContentPath;
 	
 	static File folderPath; //    /Traducteur Caoivarois
 	 
@@ -44,6 +46,22 @@ public class Main extends Application {
 		internContentFolder = "War"+File.separator+"Content";
 		
 		launch(args);
+	}
+
+	public static String getInternContentFolder() {
+		return internContentFolder;
+	}
+
+	public static String getExternContentPath() {
+		return externContentPath;
+	}
+
+	public static void setExternContentPath(String externContentPath) {
+		Main.externContentPath = externContentPath;
+	}
+
+	public static File getFolderPath() {
+		return folderPath;
 	}
 	
 }

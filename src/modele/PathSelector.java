@@ -10,6 +10,8 @@ import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 
+import application.Main;
+
 public class PathSelector {
 
 	
@@ -27,7 +29,7 @@ public class PathSelector {
      int returnVal = chooser.showOpenDialog(chooser);
      if(returnVal == JFileChooser.APPROVE_OPTION) {
         System.out.println("Voici le chemin du \\War: " + chooser.getSelectedFile().getPath());
-        Main.externContentPath = chooser.getSelectedFile().getPath();
+        Main.setExternContentPath(chooser.getSelectedFile().getPath());
      }
      try {
 			copyTree();
@@ -39,11 +41,11 @@ public class PathSelector {
 	public  void copyTree() throws IOException { //remplace les données internes par les externes
 		
 		File dest;
-		String res = Main.folderPath.getPath()+File.separator+"data"+File.separator+"War"+File.separator+"Content"+File.separator+"Blueprints";
+		String res = Main.getFolderPath().getPath()+File.separator+"data"+File.separator+"War"+File.separator+"Content"+File.separator+"Blueprints";
 		
 		dest = new File(res);
 		dest.mkdirs();
-		File src = new File(Main.externContentPath+File.separator+"Content"+File.separator+"Blueprints");
+		File src = new File(Main.getExternContentPath()+File.separator+"Content"+File.separator+"Blueprints");
 		copyFile(src,dest);
 		removeEmpty(dest);
 		
