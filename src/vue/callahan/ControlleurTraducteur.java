@@ -69,7 +69,7 @@ public class ControlleurTraducteur extends Stage {
 	private boolean renaming,retexting;
 
 	public void init(Traducteur trad,Stage stage) {
-		System.out.println("-----------");
+		//System.out.println("-----------");
 		renaming = false;
 		retexting = false;
 		this.trad = trad;
@@ -104,6 +104,8 @@ public class ControlleurTraducteur extends Stage {
 		stage.show();
 		this.addAll(trad.getItemObservableList());
 		itemList.requestFocus();
+		itemList.getSelectionModel().select(0);
+		setSelectedItem(itemList.getSelectionModel().getSelectedItem());
 	}
 	
 
@@ -136,7 +138,7 @@ public class ControlleurTraducteur extends Stage {
 			selectedItemTitleFld.setVisible(false);
 			selectedItemTitleFld.setDisable(true);
 			selectedListItem.replaceTitle(selectedItemTitleFld.getText());
-			selectedItemTitleLbl.setText(selectedListItem.getTitle());
+			selectedItemTitleLbl.setText(selectedListItem.getTradTitle());
 			itemList.refresh();
 		}
     }
@@ -164,7 +166,7 @@ public class ControlleurTraducteur extends Stage {
 				selectedItemDescFld.setVisible(false);
 				selectedItemDescFld.setDisable(true);
 				selectedListItem.replaceDesc(selectedItemDescFld.getText());
-				selectedItemDescLbl.setText(selectedListItem.getDesc());
+				selectedItemDescLbl.setText(selectedListItem.getTradDesc());
 				itemList.refresh();
 			} else {
 				event.consume();

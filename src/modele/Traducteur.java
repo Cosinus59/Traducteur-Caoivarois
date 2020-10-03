@@ -18,20 +18,6 @@ public class Traducteur {
 		fm = new FileManager(this);
 		itemObservableList = fm.loadInternBlueprint();
 	}
-	
-	public void test() {
-		ItemPickup bp1 = new ItemPickup("ATAmmo","ATAmmo.uasset");
-    	bp1.setTitle("Munition antiChar");
-    	bp1.setDesc("Voila Voila");
-    	
-    	ItemPickup bp2 = new ItemPickup("RifleAmmo","RifleAmmo.uasset");
-    	bp2.setTitle("9.80 mm");
-    	bp2.setDesc("Voili Voilou");
-    	
-    	ObservableList<ItemPickup> itemObservableList = FXCollections.observableArrayList();
-    	itemObservableList.addAll(bp1,bp2);
-    	display.addAll(itemObservableList);
-	}
 
 	public ObservableList<ItemPickup> getItemObservableList() {
 		return itemObservableList;

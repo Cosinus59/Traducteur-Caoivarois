@@ -11,8 +11,11 @@ public class ItemPickup extends Blueprint {
 	private int descSize;
 	private int descPos;
 	private String tradTitle;
-	private String TradDesc;
+	private String tradDesc;
 	private String imagePath;
+	
+	private boolean isTtlTrnsltd;
+	private boolean isDscTrnsltd;
 	
 	public ItemPickup(String name, String path) {
 		super(name, path);
@@ -27,6 +30,8 @@ public class ItemPickup extends Blueprint {
 	}
 
 	public boolean setContent(String content) {
+		isTtlTrnsltd = false;
+		isDscTrnsltd = false;
 		int idx = -1;
 		
 		setImagePath(getImagePath(content));
@@ -115,15 +120,17 @@ public class ItemPickup extends Blueprint {
 	}
 
 	public String getTradDesc() {
-		return TradDesc;
+		if(isDscTrnsltd)return tradDesc;
+		else return getDesc();
 	}
 
 	public void setTradDesc(String tradDesc) {
-		TradDesc = tradDesc;
+		this.tradDesc = tradDesc;
 	}
 
 	public String getTradTitle() {
-		return tradTitle;
+		if(isTtlTrnsltd)return tradTitle;
+		else return getTitle();
 	}
 
 	public void setTradTitle(String tradTitle) {
@@ -193,7 +200,8 @@ public class ItemPickup extends Blueprint {
 			while(sb.length()<titleSize) {
 				sb.append(" ");
 			}
-			setTitle(sb.toString());
+			setTradTitle(sb.toString());
+			isTtlTrnsltd = true;
 		}
 	}
 
@@ -209,7 +217,8 @@ public class ItemPickup extends Blueprint {
 			while(sb.length()+nbReturn<descSize) {
 				sb.append(" ");
 			}
-			setDesc(sb.toString());
+			setTradDesc(sb.toString());
+			isDscTrnsltd = true;
 		}
 	}
 	

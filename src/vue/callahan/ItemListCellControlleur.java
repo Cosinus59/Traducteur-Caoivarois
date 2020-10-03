@@ -60,16 +60,15 @@ public class ItemListCellControlleur {
     * Cet écouteur est appelé lorsque la propriété value change.
     */
     private final ChangeListener<ItemPickup> valueChangeListener = (ObservableValue<? extends ItemPickup> observableValue, ItemPickup oldValue, ItemPickup newValue) -> {
-        System.out.println(newValue.getTitle());
+    	//System.out.println(newValue.getTitle());
     	updateUI(newValue);
     };
 
     private void updateUI(ItemPickup newValue) {
-        final ItemPickup val = newValue;
-        final String titleText = val.getTitle();
-        final String descText = val.getDesc();
-        titleLbl.setText(titleText);
-        descLbl.setText(descText);
+        ItemPickup val = newValue;
+       
+        titleLbl.setText(val.getTradTitle());
+        descLbl.setText(val.getTradDesc());
         File imgFile = new File("Images"+File.separator+"Textures"+File.separator+val.getImagePath());
         String path;
 		try {
