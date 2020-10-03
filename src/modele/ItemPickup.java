@@ -27,81 +27,76 @@ public class ItemPickup extends Blueprint {
 	}
 
 	public boolean setContent(String content) {
-		boolean checked = false;
 		int idx = -1;
+		
+		setImagePath(getImagePath(content));
+		
+		//set up du titre
+		idx = getFieldFlag(content,idx);
+		if(idx==-1)return false;
+		idx = setUpTitle(idx,content);
+		
+		//set up de la desc
+		idx = getFieldFlag(content,idx);
+		if(idx==-1)return false;
+		idx = setUpDesc(idx,content);
+		
+		return true;
+	}
+	
+	private int getFieldFlag(String content, int idx) {
+		boolean checked = false;
 		String temp;
 		
+		while(idx+32<content.length()&&!checked) {
+			idx++;
+			temp = ""+content.charAt(idx);
+			if(temp.matches("[0-9A-F]")) {
+				for (int j = 0;j<32;j++) {
+					temp = ""+content.charAt(idx+j);
+					if(temp.matches("[0-9A-F]")) {
+						if(j==31)checked = true;
+					}
+					else break;
+				}
+			}
+		}
+		if(checked)return idx;
+		else return -1;
+	}
+
+	private int setUpTitle(int idx,String content) {
+		idx +=37; //on avance du flag jusqu'au titre
+		titlePos = idx;
+		titleSize = 1;
+		while(content.charAt(idx+1)>31) {
+			idx++;
+			titleSize++;
+		}
+		title = content.substring(titlePos, titlePos+titleSize);
+		return idx;
+	}
+
+	private Integer setUpDesc(int idx, String content) {
+		idx+=37;
+		descPos = idx;
+		descSize = 1;
+		while(content.charAt(idx+1)>31) {
+			idx++;
+			descSize++;
+		}
+		desc = content.substring(descPos, descPos+descSize);
+		return idx;
+	}
+
+	private String getImagePath(String content) {
 		int idxImage = content.indexOf("/Game/Textures/UI/ItemIcons/")+28;
 		int idxImageFin = idxImage;
 		while(content.charAt(idxImageFin)>31) {
 			idxImageFin++;
 		}
-		imagePath = "UI"+File.separator+"ItemIcons"+File.separator+content.substring(idxImage,idxImageFin)+".png";
-		//System.out.println(imagePath);
-		while(idx+32<content.length()&&!checked) {
-			idx++;
-			temp = ""+content.charAt(idx);
-			if(temp.matches("[0-9A-F]")) {
-				for (int j = 0;j<32;j++) {
-					temp = ""+content.charAt(idx+j);
-					if(temp.matches("[0-9A-F]")) {
-						if(j==31)checked = true;
-					}
-					else break;
-				}
-			}
-			
-		}
-		//System.out.println(idx);
-		//System.out.println(content.charAt(idx));
-		idx +=37;
-		//System.out.println(content.charAt(idx));
-		if(checked) {
-			titlePos = idx;
-			titleSize = 1;
-			while(content.charAt(idx+1)>31) {
-				idx++;
-				titleSize++;
-				//System.out.println(titleSize+" "+(int)content.charAt(idxtitre));
-			}
-			title = content.substring(titlePos, titlePos+titleSize);
-			//System.out.println(title + " : taille = "+titleSize+" Pos = "+titlePos);
-		}
-		else return false;
-		checked = false;
-		
-		while(idx+32<content.length()&&!checked) {
-			idx++;
-			//System.out.println(idx+" "+content.charAt(idx));
-			temp = ""+content.charAt(idx);
-			if(temp.matches("[0-9A-F]")) {
-				for (int j = 0;j<32;j++) {
-					temp = ""+content.charAt(idx+j);
-					if(temp.matches("[0-9A-F]")) {
-						if(j==31)checked = true;
-					}
-					else break;
-				}
-			}
-		}
-		
-		if(checked) {
-			idx+=37;
-			descPos = idx;
-			
-			descSize = 1;
-			while(content.charAt(idx+1)>31) {
-				idx++;
-				descSize++;
-				//System.out.println(titleSize+" "+(int)content.charAt(idxtitre));
-			}
-			desc = content.substring(descPos, descPos+descSize);
-			//System.out.println("	"+desc + " : taille = "+descSize+" Pos = "+descPos);
-		}
-		else return false;
-		return true;
+		return "UI"+File.separator+"ItemIcons"+File.separator+content.substring(idxImage,idxImageFin)+".png";
 	}
-	
 
 	public String getTitle() {
 		return title;
