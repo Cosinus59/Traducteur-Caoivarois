@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="root" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.callahan.ControlleurTraducteur">
+<VBox fx:id="root" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vue.callahan.ControlleurTraducteur">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -145,17 +158,17 @@
                   </HBox>
                </content>
             </Tab>
-            <Tab fx:id="vehiclesTab" text="Véhicules">
+            <Tab fx:id="vehiclesTab" disable="true" text="Véhicules">
                <content>
                   <AnchorPane minHeight="-Infinity" minWidth="-Infinity" />
                </content>
             </Tab>
-            <Tab fx:id="structuresTab" text="Structures">
+            <Tab fx:id="structuresTab" disable="true" text="Structures">
                <content>
                   <AnchorPane prefHeight="1500.0" />
                </content>
             </Tab>
-            <Tab fx:id="techTab" text="TechTree">
+            <Tab fx:id="techTab" disable="true" text="TechTree">
                <content>
                   <AnchorPane />
                </content>

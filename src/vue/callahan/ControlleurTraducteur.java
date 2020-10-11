@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -59,16 +61,16 @@ public class ControlleurTraducteur extends Stage {
     @FXML
     private Tab structuresTab;    //Structures
     
-    
-    @SuppressWarnings("unused")
 	private Traducteur trad;
     PathSelector ps;
 	ItemPickup selectedListItem;
 	
 	@SuppressWarnings("unused")
 	private boolean renaming,retexting;
-
-	public void init(Traducteur trad,Stage stage) {
+	
+	
+	
+	public void init(Traducteur trad, Parent root) {
 		//System.out.println("-----------");
 		renaming = false;
 		retexting = false;
@@ -95,13 +97,16 @@ public class ControlleurTraducteur extends Stage {
             }
         });
 		
-		stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+		this.widthProperty().addListener((obs, oldVal, newVal) -> {
 			setItemSpace(newVal.doubleValue());
 		});
-		
-		stage.setTitle("Traducteur Caoivarois");
-		stage.setResizable(true);
-		stage.show();
+		this.setScene(new Scene(root));
+		this.setTitle("Traducteur Caoivarois");
+		this.setResizable(true);
+		this.show();
+	}
+	
+	public void iniItem() {
 		this.addAll(trad.getItemObservableList());
 		itemList.requestFocus();
 		itemList.getSelectionModel().select(0);
