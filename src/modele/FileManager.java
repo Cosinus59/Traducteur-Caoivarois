@@ -5,10 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import application.Main;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class FileManager {
 	
@@ -50,14 +49,14 @@ public class FileManager {
 		return file;
 	}
 	
-	public ObservableList<ItemPickup> loadInternBlueprint() {
-		ObservableList<ItemPickup> itemObservableList = FXCollections.observableArrayList();
+	public ArrayList<ItemPickup> loadInternBlueprint() {
+		ArrayList<ItemPickup> itemList = new ArrayList<ItemPickup>();
 		File internItemPickup = new File(Main.getInternContentFolder()+File.separator+"Blueprints"+File.separator+"ItemPickups");
-		loadInternItem(internItemPickup,itemObservableList);
-		return itemObservableList;
+		loadInternItem(internItemPickup,itemList);
+		return itemList;
 	}
 	
-	public void loadInternItem(File internItemPickup,ObservableList<ItemPickup> itemObservableList) {
+	public void loadInternItem(File internItemPickup,ArrayList<ItemPickup> itemList) {
 		File files[] = internItemPickup.listFiles();
 		for (File f : files) {
 			//System.out.println(f);
@@ -68,7 +67,7 @@ public class FileManager {
 				//System.out.println(item.getName());
 				//System.out.println(f.getAbsolutePath());
 				item.setContent(readFile(f));
-				itemObservableList.add(item);
+				itemList.add(item);
 			}
 		}
 	}

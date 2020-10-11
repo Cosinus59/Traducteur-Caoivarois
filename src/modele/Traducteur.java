@@ -1,14 +1,13 @@
 package modele;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import vue.callahan.ControlleurTraducteur;
 
 public class Traducteur {
 
-	ObservableList<ItemPickup> itemObservableList = FXCollections.observableArrayList();
+	ArrayList<ItemPickup> itemList = new ArrayList<ItemPickup>();
 	
 	ControlleurTraducteur display;
 	
@@ -16,12 +15,11 @@ public class Traducteur {
 	ControlleurTraducteur cont;
 	public Traducteur() throws IOException {
 		fm = new FileManager(this);
-		itemObservableList = fm.loadInternBlueprint();
+		itemList = fm.loadInternBlueprint();
 	}
 
-	public ObservableList<ItemPickup> getItemObservableList() {
-		return itemObservableList;
+	public ArrayList<ItemPickup> getItemList() {
+		return itemList;
 	}
-	
 	
 }

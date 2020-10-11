@@ -6,15 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 public class CSVReader {
 	//European countries use ";" as 
     //CSV separator because "," is their digit separator
    
 	private static final String CSV_SEPARATOR = ";";
-	static void writeToCSV(ObservableList<ItemPickup> productList) {
+	static void writeToCSV(ArrayList<ItemPickup> productList) {
     	try {
         	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("products.csv"), "UTF-8"));
         	for (ItemPickup product : productList) {
