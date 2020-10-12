@@ -2,6 +2,7 @@ package modele;
 
 import java.io.File;
 
+@SuppressWarnings("serial")
 public class ItemPickup extends Blueprint {
 
 	private String title;

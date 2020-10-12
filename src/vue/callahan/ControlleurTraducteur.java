@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+import filesManagment.PathSelector;
+import filesManagment.Serializer;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -23,7 +25,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import modele.ItemPickup;
-import modele.PathSelector;
 import modele.Traducteur;
 
 public class ControlleurTraducteur extends Stage {
@@ -68,8 +69,6 @@ public class ControlleurTraducteur extends Stage {
 	@SuppressWarnings("unused")
 	private boolean renaming,retexting;
 	
-	
-	
 	public void init(Traducteur trad, Parent root) {
 		//System.out.println("-----------");
 		renaming = false;
@@ -91,8 +90,6 @@ public class ControlleurTraducteur extends Stage {
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
                 if (newPropertyValue){
                 	itemList.getItems();
-                	itemList.scrollTo(itemList.getItems().size());
-                	itemList.scrollTo(0);
                 }
             }
         });
@@ -107,12 +104,18 @@ public class ControlleurTraducteur extends Stage {
 	}
 	
 	public void iniItem() {
-		this.addAll(trad.getItemList());
+		addAll(trad.getItemList());
+		
 		itemList.requestFocus();
 		itemList.getSelectionModel().select(0);
+		itemList.scrollTo(0);
 		setSelectedItem(itemList.getSelectionModel().getSelectedItem());
+		
 	}
 	
+	/*
+		Renommage et redéfinition de l'item sélectionné
+	 */
 
 	void cancelRename() {
 		selectedItemTitleFld.setVisible(false);
@@ -183,6 +186,17 @@ public class ControlleurTraducteur extends Stage {
 			selectedItemDescFld.insertText(caretPosition, "\n");
 		}
     }
+	
+	@FXML
+	public void saveRequest(ActionEvent event) {
+		if(trad.getName()==null||trad.getName().equals(""))new tradNameWindow(this);
+		else saveAs(trad.getName());
+	}
+	
+	void saveAs(String name) {
+		trad.setName(name);
+		Serializer.writeTrad(trad);
+	}
 	
 	private void displayRefresh() {
 		// TODO Auto-generated method stub

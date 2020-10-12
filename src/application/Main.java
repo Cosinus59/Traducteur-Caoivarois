@@ -22,7 +22,7 @@ public class Main extends Application {
 	static String internImagesFolder; //        
 	
 	@Override
-	public void start(Stage stage) throws IOException {
+	public void start(Stage stage) throws IOException, InterruptedException {
 		Traducteur trad = new Traducteur();
 		new CallahanView(trad);
 	}
@@ -30,7 +30,7 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		FileSystemView fsv = FileSystemView.getFileSystemView();
 		folderPath = new File(fsv.getDefaultDirectory().getPath()+File.separator+"Traducteur Caoivarois");
-		internContentFolder = "War"+File.separator+"Content";
+		internContentFolder = "data"+File.separator+"Content";
 		
 		launch(args);
 	}

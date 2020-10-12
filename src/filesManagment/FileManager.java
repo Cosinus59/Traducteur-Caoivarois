@@ -1,4 +1,4 @@
-package modele;
+package filesManagment;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import application.Main;
+import modele.ItemPickup;
+import modele.Traducteur;
 
 public class FileManager {
 	
@@ -19,7 +21,7 @@ public class FileManager {
 	}
 	
 	
-	public String readFile(File file) { // return une String du fichier 
+	public static String readFile(File file) { // return une String du fichier 
 		try {
         	FileReader fr;
         	fr = new FileReader(file);
@@ -49,14 +51,14 @@ public class FileManager {
 		return file;
 	}
 	
-	public ArrayList<ItemPickup> loadInternBlueprint() {
+	public static ArrayList<ItemPickup> loadInternBlueprint() {
 		ArrayList<ItemPickup> itemList = new ArrayList<ItemPickup>();
 		File internItemPickup = new File(Main.getInternContentFolder()+File.separator+"Blueprints"+File.separator+"ItemPickups");
 		loadInternItem(internItemPickup,itemList);
 		return itemList;
 	}
 	
-	public void loadInternItem(File internItemPickup,ArrayList<ItemPickup> itemList) {
+	public static void loadInternItem(File internItemPickup,ArrayList<ItemPickup> itemList) {
 		File files[] = internItemPickup.listFiles();
 		for (File f : files) {
 			//System.out.println(f);
@@ -72,12 +74,12 @@ public class FileManager {
 		}
 	}
 	
-	private String removeFullPath(String path) {
+	private static String removeFullPath(String path) {
 		int debut = path.lastIndexOf(File.separator+"Content"+File.separator);
 		return path.substring(debut+9);
 	}
 
-	public String removeUasset(String toRemove){
+	public static String removeUasset(String toRemove){
 		String res = toRemove.replaceAll(".uasset", "");
 		return res;
 	}

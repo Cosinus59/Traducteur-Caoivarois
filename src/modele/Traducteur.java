@@ -1,25 +1,32 @@
 package modele;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import vue.callahan.ControlleurTraducteur;
+import filesManagment.FileManager;
 
-public class Traducteur {
+@SuppressWarnings("serial")
+public class Traducteur implements Serializable {
 
 	ArrayList<ItemPickup> itemList = new ArrayList<ItemPickup>();
 	
-	ControlleurTraducteur display;
+	String name;
 	
-	FileManager fm;
-	ControlleurTraducteur cont;
 	public Traducteur() throws IOException {
-		fm = new FileManager(this);
-		itemList = fm.loadInternBlueprint();
+		itemList = FileManager.loadInternBlueprint();
 	}
 
 	public ArrayList<ItemPickup> getItemList() {
 		return itemList;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

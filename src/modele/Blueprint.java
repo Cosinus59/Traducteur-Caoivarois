@@ -1,6 +1,9 @@
 package modele;
 
-public class Blueprint {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Blueprint implements Serializable {
 	
 	private String name;
 	private String FileName;

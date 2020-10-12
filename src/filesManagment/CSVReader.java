@@ -1,4 +1,4 @@
-package modele;
+package filesManagment;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import modele.ItemPickup;
 
 public class CSVReader {
 	//European countries use ";" as 
