@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 import application.Main;
 import modele.ItemPickup;
-import modele.Traducteur;
+import modele.Traduction;
 
 public class FileManager {
 	
 	@SuppressWarnings("unused")
-	private Traducteur trad;
+	private Traduction trad;
 	
-	public FileManager(Traducteur traducteur) {
+	public FileManager(Traduction traducteur) {
 		trad = traducteur;
 	}
 	

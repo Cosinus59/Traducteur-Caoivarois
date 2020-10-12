@@ -26,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import modele.ItemPickup;
 import modele.Traducteur;
+import modele.Traduction;
 
 public class ControlleurTraducteur extends Stage {
 	
@@ -62,18 +63,23 @@ public class ControlleurTraducteur extends Stage {
     @FXML
     private Tab structuresTab;    //Structures
     
-	private Traducteur trad;
+	private Traducteur traducteur;
+	private Traduction currentTrad;
     PathSelector ps;
 	ItemPickup selectedListItem;
 	
 	@SuppressWarnings("unused")
 	private boolean renaming,retexting;
 	
-	public void init(Traducteur trad, Parent root) {
+	public void init(Traducteur traducteur, Parent root) {
 		//System.out.println("-----------");
 		renaming = false;
 		retexting = false;
-		this.trad = trad;
+		
+		this.traducteur = traducteur;
+		if(traducteur.getTraductions().size()==0)traducteur.addTraduction(new Traduction());
+		currentTrad = traducteur.getTraductions().get(0);
+		
 		ps = new PathSelector();
 		
 		// cell factory et double clique
@@ -104,7 +110,7 @@ public class ControlleurTraducteur extends Stage {
 	}
 	
 	public void iniItem() {
-		addAll(trad.getItemList());
+		addAll(currentTrad.getItemList());
 		
 		itemList.requestFocus();
 		itemList.getSelectionModel().select(0);
@@ -146,6 +152,7 @@ public class ControlleurTraducteur extends Stage {
 			selectedItemTitleFld.setVisible(false);
 			selectedItemTitleFld.setDisable(true);
 			selectedListItem.replaceTitle(selectedItemTitleFld.getText());
+			System.out.println(selectedListItem.getTradTitle());
 			selectedItemTitleLbl.setText(selectedListItem.getTradTitle());
 			itemList.refresh();
 		}
@@ -189,13 +196,13 @@ public class ControlleurTraducteur extends Stage {
 	
 	@FXML
 	public void saveRequest(ActionEvent event) {
-		if(trad.getName()==null||trad.getName().equals(""))new tradNameWindow(this);
-		else saveAs(trad.getName());
+		if(currentTrad.getName()==null||currentTrad.getName().equals(""))new tradNameWindow(this);
+		else saveAs(currentTrad.getName());
 	}
 	
 	void saveAs(String name) {
-		trad.setName(name);
-		Serializer.writeTrad(trad);
+		currentTrad.setName(name);
+		Serializer.writeTrad(currentTrad);
 	}
 	
 	private void displayRefresh() {
@@ -213,8 +220,8 @@ public class ControlleurTraducteur extends Stage {
 		
 	}
 	
-	public void setMain(Traducteur trad) {
-		this.trad = trad;
+	public void setMain(Traduction trad) {
+		this.currentTrad = trad;
 	}
 	
 	public void repathRequest(ActionEvent event) {
@@ -251,8 +258,8 @@ public class ControlleurTraducteur extends Stage {
 			System.out.println("pb avec l'image de l'item sélectionné");
 			e.printStackTrace();
 		}
-		selectedItemTitleLbl.setText(selectedListItem.getTitle());
-		selectedItemDescLbl.setText(selectedListItem.getDesc());
+		selectedItemTitleLbl.setText(selectedListItem.getTradTitle());
+		selectedItemDescLbl.setText(selectedListItem.getTradDesc());
 	}
 
 }

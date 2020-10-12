@@ -4,14 +4,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
 
 public class tradNameWindow extends Stage {
 	
 	TextField tf;
-	
+	Tooltip tt;
 	ControlleurTraducteur cont;
 	
 	public tradNameWindow(ControlleurTraducteur cont) {
@@ -38,6 +40,9 @@ public class tradNameWindow extends Stage {
 		tf.setLayoutY(75);
 		tf.setPrefWidth(225);
 		
+		tt = new Tooltip("Pas de \\|.<>\"*");
+		tt.setAnchorLocation(PopupWindow.AnchorLocation.WINDOW_TOP_LEFT);
+		tt.setAutoHide(false);
 		Button validate,cancel;
 		validate = new Button("Valider");
 		cancel = new Button("Annuler");
@@ -45,13 +50,26 @@ public class tradNameWindow extends Stage {
 		validate.setLayoutY(111);
 		cancel.setLayoutX(243);
 		cancel.setLayoutY(111);
-		
+		this.xProperty().addListener((obs, oldVal, newVal) -> {
+			if(tt.isShowing()) {
+				showTooltip();
+			}
+		});
+		this.yProperty().addListener((obs, oldVal, newVal) -> {
+			if(tt.isShowing()) {
+				showTooltip();
+			}
+		});
 		validate.setOnAction(e ->{
 			if(checkText(tf.getText())) {
 				cont.saveAs(tf.getText());
 				this.close();
+			} else if(!tt.isShowing()){
+				showTooltip();
 			}
 		});
+		
+		
 		cancel.setOnAction(e ->this.close());
 		
 		pane.getChildren().add(title);
@@ -69,12 +87,15 @@ public class tradNameWindow extends Stage {
 	private boolean checkText(String text) {
 		if(text==null|text=="")return false;
 		
-		if(text.matches(".*[\\p{Punct}].*")) {
-			//TODO
+		if(text.matches(".*[\\\\/\\.!?*:<>|\"].*")) {
 			System.out.println("test");
 			return false;
 		}
 		return true;
+	}
+	
+	private void showTooltip() {
+		tt.show(this,this.getX()+199.5-39.5,this.getY()+134);
 	}
 	
 }

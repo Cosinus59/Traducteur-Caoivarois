@@ -202,6 +202,7 @@ public class ItemPickup extends Blueprint {
 				sb.append(" ");
 			}
 			setTradTitle(sb.toString());
+			System.out.println(tradTitle);
 			isTtlTrnsltd = true;
 		}
 	}

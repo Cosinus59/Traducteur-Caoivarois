@@ -12,7 +12,7 @@ public class CallahanView extends Stage{
 
 	ControlleurTraducteur controlleur;
 	Parent root;
-	
+
 	public CallahanView(Traducteur trad) throws IOException, InterruptedException {
 		FXMLLoader loader = new FXMLLoader();
 		controlleur = null;
@@ -22,14 +22,10 @@ public class CallahanView extends Stage{
 		root = loader.load();
 
 		controlleur = (ControlleurTraducteur) loader.getController();
+
 		
 		controlleur.init(trad,root);
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				controlleur.iniItem();	
-			}
-		});
+		controlleur.iniItem();
 	}
 
 }
