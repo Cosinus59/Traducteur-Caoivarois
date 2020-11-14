@@ -121,7 +121,7 @@ public class ItemPickup extends Blueprint {
 	}
 
 	public String getTradDesc() {
-		if(isDscTrnsltd)return tradDesc;
+		if(isDscTrnsltd())return tradDesc;
 		else return getDesc();
 	}
 
@@ -130,7 +130,7 @@ public class ItemPickup extends Blueprint {
 	}
 
 	public String getTradTitle() {
-		if(isTtlTrnsltd)return tradTitle;
+		if(isTtlTrnsltd())return tradTitle;
 		else return getTitle();
 	}
 
@@ -178,9 +178,18 @@ public class ItemPickup extends Blueprint {
 		this.imagePath = imagePath;
 	}
 
+	public boolean isTtlTrnsltd() {
+		return isTtlTrnsltd;
+	}
+
+	public boolean isDscTrnsltd() {
+		return isDscTrnsltd;
+	}
+
 	public boolean checkName(String toCheck) {
-		if(this.titleSize>=toCheck.length())return true;
-		return false;
+		if(this.titleSize<toCheck.length())return false;
+		if(this.title.equals(toCheck))return false;
+		return true;
 	}
 	
 	public boolean checkDesc(String toCheck) {
@@ -191,37 +200,27 @@ public class ItemPickup extends Blueprint {
 				nbReturn++;
 			}
 		}
-		if(this.descSize>=nbReturn+length)return true;
+		if(this.descSize<nbReturn+length)return false;
+		if(this.desc.equals(toCheck))return false;
+		return true;
+	}
+
+	public boolean replaceTitle(String text) {
+		if(checkName(text)) {
+			setTradTitle(text);
+			isTtlTrnsltd = true;
+			return true;
+		}
 		return false;
 	}
 
-	public void replaceTitle(String text) {
-		if(checkName(text)) {
-			StringBuilder sb = new StringBuilder(text);
-			while(sb.length()<titleSize) {
-				sb.append(" ");
-			}
-			setTradTitle(sb.toString());
-			System.out.println(tradTitle);
-			isTtlTrnsltd = true;
-		}
-	}
-
-	public void replaceDesc(String text) {
+	public boolean replaceDesc(String text) {
 		if(checkDesc(text)) {
-			int nbReturn = 0;
-			for (int i = 0; i < text.length(); i++) {
-				if (text.charAt(i) == '\n') {
-					nbReturn++;
-				}
-			}
-			StringBuilder sb = new StringBuilder(text);
-			while(sb.length()+nbReturn<descSize) {
-				sb.append(" ");
-			}
-			setTradDesc(sb.toString());
+			setTradDesc(text);
 			isDscTrnsltd = true;
+			return true;
 		}
+		return false;
 	}
 	
 }

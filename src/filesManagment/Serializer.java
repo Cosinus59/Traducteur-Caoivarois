@@ -57,8 +57,8 @@ public class Serializer {
 		for (File f : temporaires) {
 			if(f.isFile()&&f.getPath().substring(f.getPath().length()-5, f.getPath().length()).equals(".trad"));
 			traductions.add(getTrad(f));
-			System.out.println(traductions);
 		}
+		System.out.println(traductions);
 		return traductions;
 	}
 

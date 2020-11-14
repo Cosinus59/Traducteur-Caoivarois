@@ -34,7 +34,7 @@ public class Main extends Application {
 		
 		launch(args);
 	}
-
+	
 	public static String getInternContentFolder() {
 		return internContentFolder;
 	}

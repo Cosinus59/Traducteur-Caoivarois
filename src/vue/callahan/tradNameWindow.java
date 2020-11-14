@@ -81,7 +81,7 @@ public class tradNameWindow extends Stage {
 		this.setScene(new Scene(pane));
 		this.setResizable(false);
 		this.setTitle("Veuillez nommer cette Traduction");
-		this.show();
+		this.showAndWait();
 	}
 
 	private boolean checkText(String text) {

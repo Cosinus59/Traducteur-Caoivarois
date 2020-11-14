@@ -2,7 +2,6 @@ package vue.callahan;
 
 import java.io.IOException;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
@@ -23,7 +22,7 @@ public class CallahanView extends Stage{
 
 		controlleur = (ControlleurTraducteur) loader.getController();
 
-		
+		trad.getSeralizedTrad();
 		controlleur.init(trad,root);
 		controlleur.iniItem();
 	}

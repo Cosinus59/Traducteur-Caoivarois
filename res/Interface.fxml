@@ -33,23 +33,23 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="File">
+        <Menu mnemonicParsing="false" text="Fichier">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
+            <MenuItem mnemonicParsing="false" text="Nouveau" />
+            <MenuItem mnemonicParsing="false" text="Ouvrir" />
+            <Menu mnemonicParsing="false" text="Ouvrir récent" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" onAction="#saveRequest" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Fermer" />
+            <MenuItem mnemonicParsing="false" onAction="#saveRequest" text="Enregister" />
+            <MenuItem mnemonicParsing="false" text="Enregister sous" />
             <MenuItem mnemonicParsing="false" text="Revert" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem mnemonicParsing="false" text="Préférences…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" text="Quitter" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Modifier">
           <items>
             <MenuItem mnemonicParsing="false" text="Undo" />
             <MenuItem mnemonicParsing="false" text="Redo" />
@@ -63,9 +63,10 @@
             <MenuItem mnemonicParsing="false" text="Unselect All" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
+            <Menu fx:id="tradMenu" mnemonicParsing="false" text="Traduction" />
+        <Menu mnemonicParsing="false" text="Aide">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem mnemonicParsing="false" text="Tuto yt" />
           </items>
         </Menu>
       </menus>
@@ -185,7 +186,7 @@
       <Separator prefWidth="200.0" />
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
+        <Label fx:id="leftStatus" maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="Left status" HBox.hgrow="ALWAYS">
           <font>
             <Font size="11.0" fx:id="x3" />
           </font>
@@ -194,7 +195,7 @@
           </textFill>
         </Label>
         <Pane HBox.hgrow="ALWAYS" />
-        <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" textOverrun="LEADING_ELLIPSIS" HBox.hgrow="NEVER" />
+        <Label fx:id="rightStatus" font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" textOverrun="LEADING_ELLIPSIS" HBox.hgrow="NEVER" />
       </children>
       <padding>
         <Insets bottom="3.0" left="3.0" right="3.0" top="1.0" />
