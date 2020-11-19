@@ -12,23 +12,16 @@ import modele.Traduction;
 
 public class Serializer {
 	
+	public final static String dataPath = "data"+File.separator+"traduction"+File.separator;
+	
 	public static void writeTrad(Traduction trad) {
 		
 		ObjectOutputStream oos = null;
-		String cc = trad.getName();
-		System.out.println(cc);
-		File traduction = new File("data"+File.separator+"traduction"+File.separator);
-		if(traduction.exists()) {
-			if(traduction.isFile()) {
-				traduction.delete();
-				traduction.mkdirs();
-			}
-			else ;
-		}
-		else traduction.mkdirs();
+		System.out.println(trad.getName());
+		makeContainerFolder();
 		
 		try {
-			final FileOutputStream fichier = new FileOutputStream("data"+File.separator+"traduction"+File.separator+trad.getName()+".trad");
+			final FileOutputStream fichier = new FileOutputStream(dataPath+trad.getName()+".trad");
 			oos = new ObjectOutputStream(fichier);
 			oos.writeObject(trad);
 		} catch (final java.io.IOException e) {
@@ -45,6 +38,18 @@ public class Serializer {
     	}
     }
 
+	private static void makeContainerFolder() {
+		File traduction = new File(dataPath);
+		if(traduction.exists()) {
+			if(traduction.isFile()) {
+				traduction.delete();
+				traduction.mkdirs();
+			}
+			else ;
+		}
+		else traduction.mkdirs();
+	}
+
 	public static ArrayList<Traduction> getTrads() {
 		File traduction = new File("data"+File.separator+"traduction"+File.separator);
 		File[] temporaires = new File[0];
@@ -52,7 +57,6 @@ public class Serializer {
 		if(traduction.exists()&&traduction.isDirectory()) {
 			temporaires = traduction.listFiles();
 		}
-		
 		
 		for (File f : temporaires) {
 			if(f.isFile()&&f.getPath().substring(f.getPath().length()-5, f.getPath().length()).equals(".trad"));

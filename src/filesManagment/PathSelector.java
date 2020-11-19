@@ -18,27 +18,28 @@ public class PathSelector {
 	public void pathSelector() { //sert a choisir des données externe
 		
 		try {
- 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
- 	} catch(Exception ex) {
- 		ex.printStackTrace();
- 	}
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
 		
 		JFileChooser chooser = new JFileChooser();
 	 	chooser.setDialogTitle("Selectionnez le dossier Content");
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-     int returnVal = chooser.showOpenDialog(chooser);
-     if(returnVal == JFileChooser.APPROVE_OPTION) {
-        System.out.println("Voici le chemin du \\War: " + chooser.getSelectedFile().getPath());
-        Main.setExternContentPath(chooser.getSelectedFile().getPath());
-     }
-     try {
+		
+		int returnVal = chooser.showOpenDialog(chooser);
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+			System.out.println("Voici le chemin du \\War: " + chooser.getSelectedFile().getPath());
+			Main.setExternContentPath(chooser.getSelectedFile().getPath());
+		}
+		try {
 			copyTree();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public  void copyTree() throws IOException { //remplace les données internes par les externes
+	public void copyTree() throws IOException { //remplace les données internes par les externes
 		
 		File dest;
 		String res = Main.getFolderPath().getPath()+File.separator+"data"+File.separator+"War"+File.separator+"Content"+File.separator+"Blueprints";
@@ -53,8 +54,8 @@ public class PathSelector {
 		
 	}
 	
-	public  void copyFile( File from, File to ) throws IOException { //sert a copié un dossier vers un autre
-		System.out.println(from);                                    //tout en chackant la validité
+	public void copyFile( File from, File to ) throws IOException { //sert a copié un dossier vers un autre
+		System.out.println(from);                                    //tout en chckant la validité
 		File files[] = from.listFiles();
 		for (File f : files) {
 			//System.out.println(f);
@@ -105,14 +106,12 @@ public class PathSelector {
 		int idx = 0;
 		String temp;
 		StringBuilder sb = new StringBuilder();
-		
-     BufferedReader b = new BufferedReader(new FileReader(f));
-     String readLine = "";
-
-     while ((readLine = b.readLine()) != null) {
+		BufferedReader b = new BufferedReader(new FileReader(f));
+		String readLine = "";
+		while ((readLine = b.readLine()) != null) {
              sb.append(readLine);
          }
-     b.close();
+		b.close();
 		String content = sb.toString();
 		//System.out.println(content.length());
 		while(idx+32<content.length()&&!checked) {

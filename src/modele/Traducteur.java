@@ -2,6 +2,7 @@ package modele;
 
 import java.util.ArrayList;
 
+import filesManagment.Paker;
 import filesManagment.Serializer;
 
 public class Traducteur {
@@ -29,5 +30,9 @@ public class Traducteur {
 	public void writTrad(Traduction currentTrad) {
 		Traduction toWrite = Traduction.toWrite(currentTrad);
 		Serializer.writeTrad(toWrite);
+	}
+	
+	public void pak() {
+		Paker.getInstance().pak();
 	}
 }

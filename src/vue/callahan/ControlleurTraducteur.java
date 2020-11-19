@@ -326,6 +326,11 @@ public class ControlleurTraducteur extends Stage {
 		selectedItemTitleLbl.setText(selectedListItem.getTradTitle());
 		selectedItemDescLbl.setText(selectedListItem.getTradDesc());
 	}
-
+	
+	@FXML
+    void exportRequest(ActionEvent event) {
+		traducteur.pak();
+    }
+	
 }
 

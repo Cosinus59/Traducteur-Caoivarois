@@ -9,17 +9,8 @@ import java.util.ArrayList;
 
 import application.Main;
 import modele.ItemPickup;
-import modele.Traduction;
 
 public class FileManager {
-	
-	@SuppressWarnings("unused")
-	private Traduction trad;
-	
-	public FileManager(Traduction traducteur) {
-		trad = traducteur;
-	}
-	
 	
 	public static String readFile(File file) { // return une String du fichier 
 		try {
