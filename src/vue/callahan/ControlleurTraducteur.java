@@ -313,6 +313,12 @@ public class ControlleurTraducteur extends Stage {
 
 	public void setSelectedItem(ItemPickup itemPickup) {
 		selectedListItem = itemPickup;
+		setSelectedItemImage();
+		selectedItemTitleLbl.setText(selectedListItem.getTradTitle());
+		selectedItemDescLbl.setText(selectedListItem.getTradDesc());
+	}
+
+	private void setSelectedItemImage() {
 		File imgFile = new File("Images"+File.separator+"Textures"+File.separator+selectedListItem.getImagePath());
         String path;
 		try {
@@ -323,8 +329,6 @@ public class ControlleurTraducteur extends Stage {
 			System.out.println("pb avec l'image de l'item sélectionné");
 			e.printStackTrace();
 		}
-		selectedItemTitleLbl.setText(selectedListItem.getTradTitle());
-		selectedItemDescLbl.setText(selectedListItem.getTradDesc());
 	}
 	
 	@FXML

@@ -17,7 +17,7 @@ public class Traduction implements Serializable {
 	}
 
 	public boolean loadIntern() {
-		itemList = FileManager.loadInternBlueprint();
+		itemList = FileManager.getInstance().loadInternBlueprint();
 		return true;
 	}
 	

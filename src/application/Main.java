@@ -18,8 +18,9 @@ public class Main extends Application {
 	
 	static File folderPath; //    /Traducteur Caoivarois
 	 
-	static String internContentFolder; //       war/content
-	static String internImagesFolder; //        
+	private static String internContentFolder; //       war/content
+	private static String internImagesFolder; //
+	private static String internPakFolder;
 	
 	@Override
 	public void start(Stage stage) throws IOException, InterruptedException {
@@ -37,6 +38,14 @@ public class Main extends Application {
 	
 	public static String getInternContentFolder() {
 		return internContentFolder;
+	}
+	
+	public static String getInternImageFolder() {
+		return internImagesFolder;
+	}
+	
+	public static String getInternPakFolder() {
+		return internPakFolder;
 	}
 
 	public static String getExternContentPath() {
